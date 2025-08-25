@@ -92,8 +92,10 @@ class Trainer:
                 if batch_idx % 20 == 0 or batch_idx == len(self.val_loader) - 1:
                     pbar.set_postfix(loss=running_avg_loss, auroc=self.metric.compute().item())
 
-        self.scheduler.step()
-        self.current_lr = self.scheduler.get_last_lr()[0]
+        if isinstance(self.scheduler, torch.optim.lr_scheduler.ReduceLROnPlateau):
+            self.scheduler.step(running_avg_loss)
+            self.current_lr = self.scheduler.get_last_lr()[0]
+
         return running_avg_loss, self.metric.compute().item()
     
     def fit(self, epochs):
