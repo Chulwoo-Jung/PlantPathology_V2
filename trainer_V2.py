@@ -28,7 +28,7 @@ class Trainer:
     def train_epoch(self, epoch):
         self.model.train()
         accu_loss = 0.0
-        running_avg_oss = 0.0
+        running_avg_loss = 0.0
         
 
         with tqdm(total=len(self.train_loader), desc=f'Epoch {epoch+1} [Training..]') as pbar:
