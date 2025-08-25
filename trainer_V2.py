@@ -109,6 +109,9 @@ class Trainer:
             history['val_auroc'].append(val_auroc)
             history['lr'].append(self.current_lr)
 
+            print(f'Epoch {epoch+1} - Train Loss: {train_loss:.4f} - Train AUROC: {train_auroc:.4f} \
+                  - Val Loss: {val_loss:.4f} - Val AUROC: {val_auroc:.4f} - LR: {self.current_lr:.6f}')
+
             if self.early_stop:
                 if val_loss < self.best_val_loss:
                     self.best_val_loss = val_loss
