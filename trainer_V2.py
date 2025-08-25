@@ -43,7 +43,7 @@ class Trainer:
                 if self.cutmix:
                     r = np.random.rand()
                     if r < self.cutmix_prob:
-                        images, labels, shuffled_labels, lam = self.cutmix(images, labels)
+                        images, labels, shuffled_labels, lam = self.cutmix(images, labels.clone())
                         outputs = self.model(images)
                         loss = self.loss_fn(outputs, labels) * lam + self.loss_fn(outputs, shuffled_labels) * (1-lam)
                  
