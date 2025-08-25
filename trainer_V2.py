@@ -75,22 +75,23 @@ class Trainer:
 
         with tqdm(total=len(self.val_loader), desc=f'Epoch {epoch+1} [Validation..]') as pbar:
             self.metric.reset()
-            for batch_idx, (images, labels) in enumerate(self.val_loader):
-                images = images.to(self.device)
-                labels = labels.to(self.device)
+            with torch.no_grad():
+                for batch_idx, (images, labels) in enumerate(self.val_loader):
+                    images = images.to(self.device)
+                    labels = labels.to(self.device)
 
-                outputs = self.model(images)
-                loss = self.loss_fn(outputs, labels)
+                    outputs = self.model(images)
+                    loss = self.loss_fn(outputs, labels)
 
-                pred_proba = F.softmax(outputs, dim=1)
-                self.metric.update(pred_proba, labels)
+                    pred_proba = F.softmax(outputs, dim=1)
+                    self.metric.update(pred_proba, labels)
 
-                accu_loss += loss.item()
-                running_avg_loss = accu_loss / (batch_idx + 1)
+                    accu_loss += loss.item()
+                    running_avg_loss = accu_loss / (batch_idx + 1)
 
-                pbar.update(1)
-                if batch_idx % 20 == 0 or batch_idx == len(self.val_loader) - 1:
-                    pbar.set_postfix(loss=running_avg_loss, auroc=self.metric.compute().item())
+                    pbar.update(1)
+                    if batch_idx % 20 == 0 or batch_idx == len(self.val_loader) - 1:
+                        pbar.set_postfix(loss=running_avg_loss, auroc=self.metric.compute().item())
 
         if isinstance(self.scheduler, torch.optim.lr_scheduler.ReduceLROnPlateau):
             self.scheduler.step(running_avg_loss)
