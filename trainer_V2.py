@@ -6,13 +6,13 @@ import numpy as np
 import torch.nn.functional as F
 
 class Trainer:
-    def __init__(self, model, train_loader, val_loader, optimizer, loss_fn, scheduler, early_patience, early_stop=True, cutmix=False, cutmix_prob=0.3):
+    def __init__(self, model, train_loader, val_loader, optimizer, scheduler, early_patience=10, early_stop=True, cutmix=False, cutmix_prob=0.3):
         self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
         self.model = model.to(self.device)
         self.train_loader = train_loader
         self.val_loader = val_loader
         self.optimizer = optimizer
-        self.loss_fn = loss_fn
+        self.loss_fn = nn.CrossEntropyLoss()
         self.metric = AUROC(task='multiclass', num_classes=4)
         self.current_lr = optimizer.param_groups[0]['lr']
         self.scheduler = scheduler

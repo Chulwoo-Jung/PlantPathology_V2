@@ -52,3 +52,7 @@ logs/
 # OS
 .DS_Store
 Thumbs.db
+
+# Data
+*.csv
+images/
