@@ -4,20 +4,7 @@
 [![PyTorch](https://img.shields.io/badge/PyTorch-1.9+-red.svg)](https://pytorch.org/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-A deep learning solution for plant pathology classification using Vision Transformers (ViT) to identify plant diseases from leaf images.
-
-## 📋 Table of Contents
-
-- [Overview](#overview)
-- [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Project Structure](#project-structure)
-- [Model Architecture](#model-architecture)
-- [Training Strategy](#training-strategy)
-- [Results](#results)
-- [Contributing](#contributing)
-- [License](#license)
+A deep learning solution for plant pathology classification to identify plant diseases from leaf images.
 
 ## 🎯 Overview
 
