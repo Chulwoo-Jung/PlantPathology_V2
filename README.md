@@ -27,6 +27,7 @@ This project implements a deep learning solution for plant pathology classificat
 - **Multiple Diseases** - Leaves with multiple disease symptoms  
 - **Rust** - Leaves affected by rust disease
 - **Scab** - Leaves affected by scab disease
+<img width="591" height="540" alt="Screenshot 2025-08-26 at 2 02 58 am" src="https://github.com/user-attachments/assets/c5acb961-d875-483c-8080-d1e0a710c186" />
 
 The solution uses a **DeiT3 (Data-efficient image Transformers)** model architecture with a two-phase fine-tuning strategy for optimal performance.
 
@@ -242,19 +243,11 @@ The model achieves competitive performance through the two-phase fine-tuning app
 - **Final Performance**: High AUROC scores on validation set
 
 Training curves show consistent improvement in both loss and AUROC metrics across epochs.
+<img width="989" height="490" alt="output" src="https://github.com/user-attachments/assets/e98c23cb-607f-4d24-860a-3391bec75026" />
+
+
 
 ## 🔧 Customization
-
-### Model Architecture
-
-```python
-# Change to different Vision Transformer
-model = create_model('vit_base_patch16_224', pretrained=True, num_classes=4)
-
-# Or use CNN-based models
-model = create_model('resnet50', pretrained=True, num_classes=4)
-model = create_model('efficientnet_b0', pretrained=True, num_classes=4)
-```
 
 ### Training Parameters
 
@@ -271,26 +264,6 @@ trainer = Trainer(
 )
 ```
 
-## 🤝 Contributing
-
-We welcome contributions! Please feel free to submit issues and pull requests.
-
-### How to Contribute
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 📞 Contact
-
-- **Issues**: [GitHub Issues](https://github.com/yourusername/plant-pathology/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/yourusername/plant-pathology/discussions)
 
 ## 🙏 Acknowledgments
 
@@ -300,5 +273,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-**Note**: This project is designed for educational and research purposes. The trained models and datasets should be used in accordance with their respective licenses and terms of use.
 
