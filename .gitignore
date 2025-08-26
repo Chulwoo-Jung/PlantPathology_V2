@@ -56,3 +56,4 @@ Thumbs.db
 # Data
 *.csv
 images/
+state_dict/
